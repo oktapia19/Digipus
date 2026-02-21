@@ -1,0 +1,43 @@
+@page { background: {{ $paperColor ?? '#FFFFFF' }}; margin: 20px; }
+        body { font-family: Arial, sans-serif; margin: 20px; background: {{ $paperColor ?? '#FFFFFF' }}; }
+        h1 { text-align: center; color: #7C3AED; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .kategori { display: flex; flex-wrap: wrap; gap: 4px; }
+        .badge { background: #7C3AED; color: white; padding: 2px 6px; border-radius: 10px; font-size: 10px; }
+
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}

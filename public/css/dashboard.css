@@ -1,0 +1,239 @@
+:root{
+  --primary:#6B33B8;
+  --secondary:#9D7BE8;
+  --bg:#F6F3FF;
+  --card:#fff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  padding-bottom:100px; /* cukup untuk bottom nav */
+}
+
+/* HEADER */
+.header{
+  background:white;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand img{
+  width:50px;
+  height:38px;
+  object-fit:contain;
+}
+
+.header h2{
+  color:var(--primary);
+  font-weight:700;
+}
+
+.header a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  height:220px;
+  background:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66') center/cover;
+  position:relative;
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(107,51,184,.55);
+}
+
+.hero-text{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
+}
+
+/* CONTENT */
+.section{
+  padding:30px 20px;
+}
+
+/* Judul Buku Terpopuler */
+.section h3{
+  font-size:28px; /* lebih besar */
+  font-weight:800;
+  margin-bottom:30px;
+  color:var(--primary);
+  text-align:center;
+  letter-spacing:0.5px;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Wrapper buku */
+.books{
+  display:flex;
+  gap:25px; /* jarak antar card */
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+
+/* Card buku */
+.book{
+  min-width:220px; /* lebih lebar */
+  background:white;
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  flex-shrink:0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book:hover{
+  transform: translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* Foto buku lebih besar dan full card */
+.book img{
+  width:100%;
+  height:260px; /* tinggi lebih besar */
+  object-fit:cover; /* tetap proporsional, tidak kepotong */
+  border-radius:12px 12px 0 0;
+}
+
+/* Konten buku */
+.book-content{
+  padding:12px 10px;
+}
+
+.book-content h4{
+  font-size:15px;
+  margin-bottom:8px;
+  font-weight:700;
+  line-height:1.3;
+}
+
+.book-content h4 a{
+  text-decoration:none;
+  color:#333;
+  transition: color 0.2s;
+}
+
+.book-content h4 a:hover{
+  color:var(--primary);
+}
+
+.book-content button{
+  width:100%;
+  padding:11px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+
+.book-content button:hover{
+  transform: scale(1.05);
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -4px 14px rgba(0,0,0,.12);
+}
+
+.bottom-nav a{
+  color:#777;
+  font-size:12px;
+  text-decoration:none;
+  text-align:center;
+}
+
+.bottom-nav i{
+  font-size:20px;
+}
+
+.bottom-nav a.active{
+  color:var(--primary);
+}
+
+/* Scroll bar buku */
+.books::-webkit-scrollbar {
+  height:6px;
+}
+
+.books::-webkit-scrollbar-thumb {
+  background: rgba(107,51,184,0.5);
+  border-radius:3px;
+}
+
+.books::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}

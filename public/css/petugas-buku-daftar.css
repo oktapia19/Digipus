@@ -1,0 +1,297 @@
+:root{
+  --primary:#6B33B8;
+  --secondary:#9D7BE8;
+  --bg:#F4F2FA;
+  --text:#2E1A47;
+  --success:#10B981;
+  --danger:#EF4444;
+  --warning:#F59E0B;
+  --gray:#6B7280;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:var(--text);padding-bottom:120px;}
+@media print{
+  body *{visibility:hidden;}
+  .print-area, .print-area *{visibility:visible;}
+  .print-area{position:absolute;left:0;top:0;width:100%;}
+  .no-print{display:none !important;}
+  .col-action{display:none !important;}
+}
+.print-header{display:none;text-align:center;margin:0 0 12px;}
+.print-header h1{font-size:20px;margin:0 0 4px;}
+.print-header p{font-size:12px;color:#666;margin:0;}
+@media print{
+  .print-header{display:block;}
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 28px;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{width:36px;}
+.brand h2{font-weight:700;font-size:18px;color:var(--primary);}
+.header-right{display:flex;align-items:center;gap:10px;}
+.header-action{
+  background:none;
+  border:none;
+  color:var(--primary);
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:13px;
+}
+
+.page-banner{
+  margin:28px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)),
+    linear-gradient(135deg,var(--secondary),var(--primary));
+  border-radius:24px;
+  padding:42px;
+  text-align:left;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.page-banner::after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:rgba(255,255,255,.18);
+  border-radius:50%;
+  top:-90px;
+  right:-90px;
+}
+
+.main-content{margin:28px;}
+
+.btn{
+  padding:10px 20px;
+  border:none;
+  box-shadow:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.table-container{
+  margin-top:24px;
+  background:#fff;
+  padding:26px;
+  border-radius:22px;
+  box-shadow:0 12px 28px rgba(0,0,0,.1);
+  overflow-x:auto;
+}
+
+.table{width:100%;border-collapse:collapse;}
+.table th,.table td{padding:12px;font-size:13px;border-bottom:1px solid #eee;}
+.table img{width:45px;height:68px;object-fit:cover;border-radius:8px;}
+
+.kategori-badge{
+  background:linear-gradient(135deg,#7C3AED,#A78BFA);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:14px;
+  font-size:11px;
+  margin:2px;
+  display:inline-block;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:14px;
+  font-size:12px;
+  font-weight:600;
+  color:#fff;
+  line-height:1.1;
+  white-space:nowrap;
+  min-width:148px;
+  text-align:center;
+}
+.status.menunggu_konfirmasi{background:var(--warning);}
+.status.disetujui{background:var(--success);}
+.status.ditolak{background:var(--danger);}
+.status.menunggu_hapus{background:var(--gray);}
+
+.action-buttons{display:flex;gap:6px;}
+.action-btn{
+  width:34px;height:34px;
+  border:none;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;cursor:pointer;
+}
+.action-btn.edit{background:#10B981;}
+.action-btn.delete{background:#EF4444;}
+.action-btn.disabled{
+  opacity:.4;
+  pointer-events:none;
+}
+.alert-success{
+  background:#10B981;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:0;
+  border:2px solid #047857;
+  text-align:center;
+  position:fixed;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2000;
+  min-width:320px;
+  max-width:92vw;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+
+/* print-clean-container */
+@page{ margin:6mm; }
+@media print{
+  *{
+    box-shadow:none !important;
+    text-shadow:none !important;
+    filter:none !important;
+  }
+
+  body > *:not(.main-content){
+    display:none !important;
+  }
+
+  .main-content > *:not(.print-area){
+    display:none !important;
+  }
+
+  /* hide non-print blocks so they do not reserve vertical space */
+  .topbar,
+  .header,
+  header,
+  .hero,
+  .page-banner,
+  .shortcut-cards,
+  .export-actions,
+  .alert,
+  .alert-success,
+  .alert.error,
+  .no-print{
+    display:none !important;
+  }
+
+  body{
+    background:#fff !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .main-content,
+  .content,
+  .container,
+  .table-container,
+  .section,
+  .card,
+  .print-area{
+    border:none !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .print-header{
+    margin:0 0 8px 0 !important;
+    padding:0 !important;
+  }
+
+  .print-area{
+    position:static !important;
+    width:100% !important;
+    left:auto !important;
+    top:auto !important;
+  }
+}
+
+
+/* Alert Ringkas - konsisten seluruh halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert {
+  border-color: rgba(107,51,184,.32);
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}
+
+@media print{
+  .print-header{display:block !important;}
+}
+

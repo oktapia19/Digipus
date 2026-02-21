@@ -1,0 +1,245 @@
+:root{
+  --primary:#6B33B8;
+  --secondary:#9D7BE8;
+  --bg:#F4F2FA;
+  --card:#fff;
+  --text:#2E1A47;
+  --success:#10B981;
+  --danger:#EF4444;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:var(--text);padding-bottom:120px;}
+@media print{
+  body *{visibility:hidden;}
+  .print-area, .print-area *{visibility:visible;}
+  .print-area{position:absolute;left:0;top:0;width:100%;}
+  .no-print{display:none !important;}
+  .col-action{display:none !important;}
+}
+.print-header{display:none;text-align:center;margin:0 0 12px;}
+.print-header h1{font-size:20px;margin:0 0 4px;}
+.print-header p{font-size:12px;color:#666;margin:0;}
+@media print{
+  .print-header{display:block;}
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 28px;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.topbar-right{display:flex;align-items:center;gap:10px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{width:36px;}
+.brand h2{font-weight:700;font-size:18px;color:var(--primary);}
+.logout-btn{background:none;border:none;color:var(--primary);font-weight:600;cursor:pointer;text-decoration:none;font-size:13px;}
+.hero{
+  margin:28px;
+  padding:42px;
+  border-radius:24px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)),
+    linear-gradient(135deg,var(--secondary),var(--primary));
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:rgba(255,255,255,.18);
+  border-radius:50%;
+  top:-90px;
+  right:-90px;
+}
+.hero h1{font-size:30px;font-weight:700;}
+.hero p{margin-top:8px;opacity:.9;}
+.main-content{margin:28px;}
+.btn{padding:10px 20px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-export{background:linear-gradient(135deg,var(--primary),var(--secondary));}
+.export-actions{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;}
+.table-container{margin-top:24px;background:var(--card);padding:26px;border-radius:22px;box-shadow:0 12px 28px rgba(0,0,0,.1);overflow-x:auto;}
+.table{width:100%;border-collapse:collapse;}
+.table th,.table td{padding:12px 10px;font-size:13px;border-bottom:1px solid #eee;}
+.table img{width:45px;height:68px;object-fit:cover;border-radius:8px;cursor:pointer;}
+.kategori-badge{background:linear-gradient(135deg,#6B33B8,#9D7BE8);color:#fff;padding:4px 10px;border-radius:14px;font-size:11px;margin:2px;display:inline-block;}
+.action-buttons{display:flex;gap:6px;}
+.action-btn{padding:6px 12px;border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:12px;}
+.action-btn.approve{background:#10B981;}
+.action-btn.reject{background:#EF4444;}
+.alert-success{
+  background:#10B981;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:0;
+  border:2px solid #047857;
+  text-align:center;
+  position:fixed;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2000;
+  min-width:320px;
+  max-width:92vw;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* BOTTOM CARDS / SHORTCUTS ADMIN */
+.shortcut-cards{
+  display:flex;
+  gap:20px;
+  margin:20px 0;
+  flex-wrap:wrap;
+  justify-content:start;
+}
+.card{
+  flex:1 1 200px;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  padding:30px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;
+  color:inherit;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.12);}
+.card h2{font-size:18px;margin-bottom:12px;color:var(--primary);}
+.card p{font-size:13px;color:#666;}
+.card i{font-size:28px;margin-bottom:10px;color:var(--secondary);}
+
+
+/* print-clean-container */
+@page{ margin:6mm; }
+@media print{
+  *{
+    box-shadow:none !important;
+    text-shadow:none !important;
+    filter:none !important;
+  }
+
+  /* hide non-print blocks so they do not reserve vertical space */
+  .topbar,
+  .header,
+  header,
+  .hero,
+  .page-banner,
+  .shortcut-cards,
+  .export-actions,
+  .alert,
+  .alert-success,
+  .alert.error,
+  .no-print{
+    display:none !important;
+  }
+
+  body{
+    background:#fff !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .main-content,
+  .content,
+  .container,
+  .table-container,
+  .section,
+  .card,
+  .print-area{
+    border:none !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .print-header{
+    margin:0 0 8px 0 !important;
+    padding:0 !important;
+  }
+
+  .print-area{
+    position:static !important;
+    width:100% !important;
+    left:auto !important;
+    top:auto !important;
+  }
+}
+
+
+/* Alert Ringkas - konsisten seluruh halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert {
+  border-color: rgba(107,51,184,.32);
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}
+
+@media print{
+  .print-header{display:block !important;}
+}
+

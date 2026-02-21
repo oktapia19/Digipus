@@ -1,0 +1,76 @@
+.app-notif-wrap{position:relative;display:inline-flex;align-items:center}
+.app-notif-btn{
+  position:relative;border:none;background:#fff;color:#6B33B8;cursor:pointer;
+  width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.08)
+}
+.app-notif-badge{
+  position:absolute;top:-5px;right:-6px;background:#DC2626;color:#fff;font-size:10px;font-weight:700;
+  min-width:18px;height:18px;border-radius:9px;padding:0 5px;display:flex;align-items:center;justify-content:center
+}
+.app-notif-dropdown{
+  position:absolute;right:0;top:44px;width:340px;max-height:420px;background:#fff;border:1px solid #eee;border-radius:12px;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);display:none;z-index:2000;overflow:hidden
+}
+.app-notif-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #f0f0f0}
+.app-notif-actions{display:flex;align-items:center;gap:6px}
+.app-notif-readall,.app-notif-clearall{
+  border:none;background:#F5F3FF;color:#6B33B8;cursor:pointer;
+  width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center
+}
+.app-notif-clearall{background:#FEE2E2;color:#B91C1C}
+.app-notif-readall:hover{background:#EDE9FE}
+.app-notif-clearall:hover{background:#FECACA}
+.app-notif-list{max-height:360px;overflow:auto}
+.app-notif-item{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px 12px;
+  border-bottom:1px solid #f5f5f5
+}
+.app-notif-item.unread{background:#F5F3FF}
+.app-notif-link{
+  text-decoration:none;color:#2E1A47;display:block;flex:1;min-width:0;
+  background:transparent;border:none;padding:0;text-align:left;cursor:pointer
+}
+.app-notif-title{font-size:13px;font-weight:600}
+.app-notif-msg{font-size:12px;color:#666;margin-top:2px}
+.app-notif-time{font-size:11px;color:#999;margin-top:4px}
+.app-notif-empty{padding:14px;color:#777;font-size:12px}
+
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}

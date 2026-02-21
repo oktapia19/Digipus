@@ -1,0 +1,31 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\KategoriBuku;
+
+class KategoriBukuSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $kategoris = [
+            'Romance',
+            'Fantasy',
+            'Mystery',
+            'Science Fiction',
+            'Biography',
+            'History',
+            'Self-Help',
+            'Horror',
+        ];
+
+        foreach ($kategoris as $kategori) {
+            KategoriBuku::create(['name' => $kategori]);
+        }
+    }
+}

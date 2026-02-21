@@ -1,0 +1,65 @@
+:root{--primary:#6B33B8;--secondary:#9D7BE8;--bg:#F6F3FF;--card:#ffffff;--text:#2E1A47}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:var(--bg);padding:20px;min-height:100vh;display:flex;justify-content:center;align-items:center}
+    
+    .receipt{background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);max-width:500px;width:100%;padding:32px}
+    
+    .receipt-header{text-align:center;margin-bottom:28px;border-bottom:2px solid var(--primary);padding-bottom:16px}
+    .receipt-header h1{font-size:28px;color:var(--primary);margin-bottom:4px}
+    .receipt-header p{color:#666;font-size:13px}
+    
+    .receipt-kode{background:linear-gradient(135deg,var(--secondary),var(--primary));color:#fff;padding:20px;border-radius:12px;margin-bottom:28px;text-align:center}
+    .receipt-kode .label{font-size:12px;opacity:.9;margin-bottom:8px}
+    .receipt-kode .kode{font-size:32px;font-weight:700;font-family:monospace;letter-spacing:4px;margin-bottom:12px}
+    .receipt-kode .copy-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:600;transition:.2s}
+    .receipt-kode .copy-btn:hover{background:rgba(255,255,255,.3)}
+    
+    .receipt-row{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:14px}
+    .receipt-row:last-child{border-bottom:none}
+    .receipt-label{font-weight:600;color:#555}
+    .receipt-value{color:#333}
+    
+    .receipt-footer{margin-top:28px;padding-top:20px;border-top:2px solid #f0f0f0;text-align:center;color:#999;font-size:12px}
+    
+    .receipt-note{background:#fff3e0;border-left:4px solid #ff9800;padding:12px;border-radius:6px;margin-top:20px;font-size:13px;color:#e65100}
+    
+    @media print{
+      body{background:#fff;padding:0}
+      .receipt{box-shadow:none;max-width:100%}
+      .receipt-kode .copy-btn{display:none}
+    }
+
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}

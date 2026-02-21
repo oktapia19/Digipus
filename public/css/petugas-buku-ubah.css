@@ -1,0 +1,227 @@
+:root{
+  --primary:#6B33B8;
+  --secondary:#9D7BE8;
+  --bg:#F4F2FA;
+  --card:#fff;
+  --text:#2E1A47;
+  --muted:#8A7DB5;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  padding-bottom:80px;
+}
+
+/* ================= HEADER ================= */
+.header{
+  background:#fff;
+  padding:14px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.header-left img{
+  width:36px;
+}
+
+.header-left h2{
+  font-size:18px;
+  font-weight:700;
+  color:var(--primary);
+}
+.header-right{display:flex;align-items:center;gap:10px;}
+.header-action{
+  background:none;
+  border:none;
+  color:var(--primary);
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* ================= EDIT FORM ================= */
+.container{
+  max-width:980px;
+  margin:28px auto;
+  padding:0 20px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:20px;
+}
+
+/* FOTO */
+.photo-wrapper{
+  height:360px;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+
+.photo-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.55),transparent);
+  display:flex;
+  align-items:flex-end;
+  padding:14px;
+  color:#fff;
+  font-weight:600;
+}
+
+/* FORM */
+.form-group{margin-bottom:10px;}
+label{
+  font-size:13px;
+  font-weight:500;
+  margin-bottom:4px;
+  display:block;
+}
+
+input, textarea{
+  width:100%;
+  padding:9px 11px;
+  border-radius:8px;
+  border:1.4px solid #ddd;
+  font-size:13px;
+}
+
+textarea{
+  resize:none;
+  height:65px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+}
+
+.row .form-group{flex:1;}
+
+/* KATEGORI */
+.kategori-box{
+  border:1.6px solid #e3dffb;
+  border-radius:12px;
+  padding:10px;
+  background:#faf9ff;
+}
+
+.kategori-header{
+  font-weight:600;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.kategori-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+}
+
+.kategori-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+}
+
+.kategori-item input{
+  width:14px;
+  height:14px;
+  accent-color:var(--primary);
+}
+
+/* UPLOAD */
+.file-upload input{display:none;}
+
+.upload-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:1.6px dashed var(--primary);
+  border-radius:10px;
+  background:#f9f7ff;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  color:var(--primary);
+}
+
+/* BUTTON */
+.btn{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  width:100%;
+  margin-top:6px;
+}
+
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}

@@ -1,0 +1,45 @@
+body{font-family:'Poppins',sans-serif;background:#f6f6f8;padding:20px}
+    .card{max-width:500px;margin:0 auto;background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12)}
+    .header{background:#6B33B8;color:#fff;padding:14px;border-radius:8px;text-align:center;margin-bottom:16px}
+    .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:14px}
+    .label{font-weight:600;color:#555}
+    .value{color:#333}
+    .badge{display:inline-block;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600}
+    .pending{background:#fff3e0;color:#e65100}
+    .confirmed{background:#e8f5e9;color:#2e7d32}
+    .back{padding:8px 12px;background:#6B33B8;color:#fff;text-decoration:none;border-radius:8px;display:inline-block;margin-top:16px}
+
+
+/* Alert Global Semua Halaman */
+.auto-dismiss-alert,
+.flash,
+.flash-alert,
+.alert,
+.alert-success,
+.alert-error,
+.alert.error,
+[role="alert"] {
+  border-radius: 14px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+}
+
+.alert,
+.auto-dismiss-alert,
+[role="alert"] {
+  border-color: rgba(107,51,184,.32) !important;
+}
+
+.alert-success,
+.flash.success,
+.flash-alert.success {
+  border-color: #15803D !important;
+}
+
+.alert-error,
+.alert.error,
+.flash.error,
+.flash-alert.error {
+  border-color: #B91C1C !important;
+}
