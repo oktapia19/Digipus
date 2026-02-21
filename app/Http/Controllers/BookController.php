@@ -45,7 +45,8 @@ class BookController extends Controller
                 ->whereIn('status', ['pending', 'confirmed', 'waiting_return'])
                 ->count()
             : 0;
-        $canBorrow = $activeBorrowCount < 2;
+        $hasStock = (int) $book->stok > 0;
+        $canBorrow = $hasStock && $activeBorrowCount < 2;
 
         return view('books.show', compact('book', 'avgRating', 'ratingCount', 'isWishlisted', 'activeBorrowCount', 'canBorrow', 'guestMode'));
     }

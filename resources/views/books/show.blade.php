@@ -70,7 +70,12 @@
       @if($canBorrow)
       <a href="{{ route('peminjaman.create', $book->id) }}" class="pinjam">📚 Pinjam Buku</a>
       @else
-      <a href="#" class="pinjam disabled" onclick="showBorrowLimitAlert('Kembalikan buku terlebih dahulu'); return false;">📚 Pinjam Buku</a>
+      @php
+        $borrowBlockedMessage = (int) $book->stok < 1
+          ? 'Stok buku habis'
+          : 'Kembalikan buku terlebih dahulu';
+      @endphp
+      <a href="#" class="pinjam disabled" onclick="showBorrowLimitAlert('{{ $borrowBlockedMessage }}'); return false;">📚 Pinjam Buku</a>
       @endif
       @if($isWishlisted)
         <form method="POST" action="{{ route('koleksi_buku.destroy', $book->id) }}">

@@ -24,19 +24,16 @@ class AuthController extends Controller
 
         // ================= ADMIN =================
         if (Auth::guard('admin')->attempt($credentials)) {
-            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
 
         // ================= PETUGAS =================
         if (Auth::guard('petugas')->attempt($credentials)) {
-            $request->session()->regenerate();
             return redirect()->route('petugas.dashboard');
         }
 
         // ================= USER =================
         if (Auth::guard('web')->attempt($credentials)) {
-            $request->session()->regenerate();
             return redirect()->route('dashboard2');
         }
 
@@ -78,11 +75,25 @@ class AuthController extends Controller
     ===================================================== */
     public function logout(Request $request)
     {
-        Auth::guard('admin')->logout();
-        Auth::guard('petugas')->logout();
-        Auth::guard('web')->logout();
+        // Logout guard sesuai konteks halaman saat ini agar tidak menendang role lain.
+        if ($request->is('admin/*') && Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        } elseif ($request->is('petugas/*') && Auth::guard('petugas')->check()) {
+            Auth::guard('petugas')->logout();
+        } elseif (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        } elseif (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        } elseif (Auth::guard('petugas')->check()) {
+            Auth::guard('petugas')->logout();
+        }
 
-        $request->session()->invalidate();
+        // Hanya invalidate jika semua guard sudah tidak login.
+        if (!Auth::guard('web')->check() && !Auth::guard('admin')->check() && !Auth::guard('petugas')->check()) {
+            $request->session()->invalidate();
+        } else {
+            $request->session()->regenerate();
+        }
         $request->session()->regenerateToken();
 
         return redirect('/login');

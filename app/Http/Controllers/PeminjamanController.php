@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanController extends Controller
 {
@@ -19,6 +20,12 @@ class PeminjamanController extends Controller
 
     public function create(Request $request, Book $book)
     {
+        if ((int) $book->stok < 1) {
+            return redirect()
+                ->route('books.show', $book->id)
+                ->with('error', 'Stok buku habis');
+        }
+
         $userId = (int) $request->user()->id;
         if ($this->hasReachedActiveBorrowLimit($userId)) {
             return redirect()
@@ -31,6 +38,12 @@ class PeminjamanController extends Controller
 
     public function store(Request $request, Book $book)
     {
+        if ((int) $book->stok < 1) {
+            return redirect()
+                ->route('books.show', $book->id)
+                ->with('error', 'Stok buku habis');
+        }
+
         $userId = (int) $request->user()->id;
         if ($this->hasReachedActiveBorrowLimit($userId)) {
             return redirect()
@@ -73,18 +86,36 @@ class PeminjamanController extends Controller
             ? \Carbon\Carbon::parse($tanggalPinjam)->addDay()
             : \Carbon\Carbon::parse($tanggalPinjam)->addDays($durasi);
 
-        $p = Peminjaman::create([
-            'user_id' => $user->id,
-            'book_id' => $book->id,
-            'durasi' => $durasi,
-            'durasi_satuan' => $durasiSatuan,
-            'tanggal_kembali' => $tanggalKembali->toDateString(),
-            'tanggal_pinjam' => $tanggalPinjam,
-            'status' => 'pending',
-            'kode' => strtoupper(Str::random(8)),
-            'alamat' => $request->input('alamat') ?? $user->alamat,
-            'no_telepon' => $request->input('no_telepon') ?? $user->no_telepon,
-        ]);
+        $stokBerhasilDikurangi = DB::transaction(function () use ($user, $book, $durasi, $durasiSatuan, $tanggalKembali, $tanggalPinjam, $request) {
+            $affected = Book::where('id', $book->id)
+                ->where('stok', '>', 0)
+                ->decrement('stok');
+
+            if ($affected < 1) {
+                return false;
+            }
+
+            Peminjaman::create([
+                'user_id' => $user->id,
+                'book_id' => $book->id,
+                'durasi' => $durasi,
+                'durasi_satuan' => $durasiSatuan,
+                'tanggal_kembali' => $tanggalKembali->toDateString(),
+                'tanggal_pinjam' => $tanggalPinjam,
+                'status' => 'pending',
+                'kode' => strtoupper(Str::random(8)),
+                'alamat' => $request->input('alamat') ?? $user->alamat,
+                'no_telepon' => $request->input('no_telepon') ?? $user->no_telepon,
+            ]);
+
+            return true;
+        });
+
+        if (! $stokBerhasilDikurangi) {
+            return redirect()
+                ->route('books.show', $book->id)
+                ->with('error', 'Stok buku habis');
+        }
 
         AppNotificationService::toAllStaff(
             'Permintaan peminjaman baru',
@@ -178,6 +209,10 @@ class PeminjamanController extends Controller
             abort(403);
         }
 
+        if ($peminjaman->status !== 'pending') {
+            return redirect()->back()->with('error', 'Peminjaman ini tidak bisa dikonfirmasi lagi.');
+        }
+        
         $peminjaman->update([
             'status' => 'confirmed',
         ]);
@@ -204,6 +239,10 @@ class PeminjamanController extends Controller
         // allow admin or petugas to reject via their guards
         if (! auth('admin')->check() && ! auth('petugas')->check()) {
             abort(403);
+        }
+
+        if (in_array($peminjaman->status, ['pending', 'confirmed', 'waiting_return'], true)) {
+            Book::where('id', $peminjaman->book_id)->increment('stok');
         }
 
         $peminjaman->update([
@@ -262,7 +301,11 @@ class PeminjamanController extends Controller
         if (Schema::hasColumn('peminjamans', 'denda_tambahan')) {
             $updatePayload['denda_tambahan'] = $dendaTambahan;
         }
+        $statusAwal = $peminjaman->status;
         $peminjaman->update($updatePayload);
+        if ($statusAwal === 'waiting_return') {
+            Book::where('id', $peminjaman->book_id)->increment('stok');
+        }
 
         AppNotificationService::toUser(
             (int) $peminjaman->user_id,
@@ -342,7 +385,11 @@ class PeminjamanController extends Controller
         if (Schema::hasColumn('peminjamans', 'denda_tambahan')) {
             $updatePayload['denda_tambahan'] = $dendaTambahan;
         }
+        $statusAwal = $peminjaman->status;
         $peminjaman->update($updatePayload);
+        if ($statusAwal === 'waiting_return') {
+            Book::where('id', $peminjaman->book_id)->increment('stok');
+        }
 
         AppNotificationService::toUser(
             (int) $peminjaman->user_id,

@@ -187,10 +187,12 @@ body{background:var(--bg);padding-bottom:90px;}
 .modal-card{
   background:#fff;
   width:100%;
-  max-width:520px;
+  max-width:480px;
+  max-height:85vh;
+  overflow-y:auto;
   border-radius:16px;
   box-shadow:0 18px 40px rgba(0,0,0,.2);
-  padding:20px;
+  padding:18px;
 }
 .modal-head{
   display:flex;

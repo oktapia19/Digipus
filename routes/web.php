@@ -24,6 +24,7 @@ Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show')
 */
 Route::get('/login', fn () => view('login.login'))->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', fn () => view('login.register'))->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.process');
 
@@ -56,7 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 /*

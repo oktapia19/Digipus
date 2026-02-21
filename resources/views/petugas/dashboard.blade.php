@@ -142,7 +142,7 @@
 </div>
 
 <!-- MODAL BUKTI RECEIPT -->
-<div id="modalBuktiReceipt" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;justify-content:center;align-items:center;padding:20px">
+<div id="modalBuktiReceipt" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:3000;justify-content:center;align-items:center;padding:20px">
   <div style="background:#fff;padding:32px;border-radius:16px;max-width:500px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.15);text-align:center">
     <h2 style="color:var(--primary);margin-bottom:20px">📄 Bukti Pengembalian</h2>
     
@@ -164,7 +164,7 @@
 </div>
 
 <!-- MODAL DETAIL PEMINJAMAN -->
-<div id="modalBukti" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;justify-content:center;align-items:center">
+<div id="modalBukti" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:3000;justify-content:center;align-items:center">
   <div style="background:#fff;padding:28px;border-radius:16px;max-width:480px;max-height:80vh;overflow-y:auto;box-shadow:0 15px 35px rgba(0,0,0,.2)">
     <h2 style="color:var(--primary);margin-bottom:12px">📋 Detail Peminjaman</h2>
     <div id="modalContent" style="margin-top:16px;font-size:14px"></div>
@@ -175,7 +175,7 @@
 </div>
 
 <!-- MODAL VERIFIKASI RETURN -->
-<div id="modalVerifikasiReturn" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;justify-content:center;align-items:center">
+<div id="modalVerifikasiReturn" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:3000;justify-content:center;align-items:center">
   <div style="background:#fff;padding:32px;border-radius:16px;max-width:420px;box-shadow:0 20px 50px rgba(0,0,0,.15)">
     <!-- HEADER -->
     <div style="text-align:center;margin-bottom:24px">
